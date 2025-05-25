@@ -1,0 +1,141 @@
+@import url('/css/style.css');
+
+body {
+    background-color: var(--fondo-general);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Titulo y Logo */
+a {
+    text-decoration: none;
+}
+.seek-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.seek-icon h1 {
+    font-family: var(--inika);
+    color: var(--blanco);
+    font-weight: lighter;
+    font-size: 3rem;
+}
+.seek-icon i {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de registro */
+.box-login {
+    width: 100%;
+    padding: 10px 25px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: -10px;
+    /* background-color: lightblue; */
+}
+.box-login h2 {
+    font-family: var(--inika);
+    color: var(--blanco);
+    font-weight: bold;
+    font-size: 25px;
+    justify-self: start;
+    margin-bottom: 5px;
+}
+.box-login form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+    width: 100%;
+}
+.box-login form button {
+    border: none;
+    width: auto;
+    border-radius: 8px;
+    padding: 10px 10px;
+    background-color: var(--fondo-boton-registro);
+    color: var(--blanco);
+    font-family: var(--inika);
+    font-size: 18px;
+    color: rgb(216, 216, 216);
+    width: 250px;
+    align-self: center;
+}
+.box-login form button:active {
+    transform: scale(.98);
+}
+
+/* Inputs flotantes */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.input-container input {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    background: none;
+    color: #fff;
+}
+.input-container label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: #c0bfbf;
+  background: var(--fondo-general);
+  padding: 0 5px;
+  transform: translateY(-50%);
+  transition: 0.2s;
+  pointer-events: none;
+  font-family: var(--inika);
+}
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 14px;
+  color: #333;
+  background-color: rgb(227, 227, 227);
+  font-family: var(--inika);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Box BackLogin */
+.box-backregister {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* background-color: lightblue; */
+    gap: 20px;
+}
+.box-backregister p {
+    color: #fff;
+}
+.box-backregister button {
+    border: none;
+    width: 120px;
+    border-radius: 8px;
+    padding: 10px 10px;
+    background-color: #989898;
+    font-family: var(--inika);
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+}
+.box-backregister form button:active {
+    transform: scale(.98);
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="/css/success.css">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Barra de navegacion -->
+    <nav>
+        <i class='bx bx-alien'  style='color:#ffffff'></i> 
+        <div class="seek-icon">
+            <h1>Seek</h1>
+            <i class='bx bx-circle-outer-dashed-circle' style='color:#ffffff'></i> 
+        </div>
+        <a style="color: #ffffff;" href="/logout">Cerrar Sesión</a>
+    </nav>
+
+    <!-- 🔽 INICIO del contenedor que se va a desenfocar -->
+    <div id="main-content">
+        <!-- Bienvenida -->
+        <div class="box-bienvenida">
+            <p>Hola, <strong><%= nombre %></strong> ¿Qué vas a buscar hoy?</p>
+        </div>
+    
+        <!-- Boton de Nueva Tarjeta -->
+        <div class="box-tarjetanueva">
+            <button id="btn-nueva">
+                <i class='bx bx-plus'  style='color:#ffffff'></i> 
+            </button>
+        </div>
+
+        <!-- Contenedor de tarjetas -->
+        <div id="tarjetas-container">
+            <% if (tarjetas.length === 0) { %>
+                <p>No tienes tarjetas aún.</p>
+            <% } else { %>
+                <% tarjetas.forEach(t => { %>
+                <div class="tarjeta" data-id="<%= t.id %>">
+                    <h3><%= t.titulo %></h3>
+                    <p><%= t.descripcion %></p>
+                    <p><strong>Prioridad:</strong> <%= t.prioridad %></p>
+                    <p><strong>Categoría:</strong> <%= t.categoria || 'Sin categoría' %></p>
+                    <button class="editar">✏️ Editar</button>
+                    <button class="eliminar">🗑️ Eliminar</button>
+                </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+    <!-- 🔼 FIN del contenedor desenfocable -->
+
+
+     <!-- Modal Formulario De Nueva Tarjeta -->
+    <div id="modal-tarjeta" class="modal hidden">
+        <div class="modal-content">
+            <form action="/tarjetas" method="POST">
+
+            <!-- Titulo -->
+            <h2>Nueva Tarjeta</h2>
+
+            <!-- Inputs -->
+            <div class="inputs-tarjeta">
+                <label>Título</label>
+                <input type="text" name="titulo" required>
+
+                <label>Descripción</label>
+                <textarea name="descripcion" required></textarea>
+
+                <label>Fecha de Recordatorio</label>
+                <input type="date" name="fecha_recordatorio">
+
+                <label>Prioridad</label>
+                <select name="prioridad">
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Alta">Alta</option>
+                </select>
+            </div>
+
+            <!-- Acciones -->
+            <div class="modal-actions">
+                <button type="submit">Guardar</button>
+                <button type="button" id="cancelar-modal">Cancelar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/success.js"></script>
+</body>
+</html>

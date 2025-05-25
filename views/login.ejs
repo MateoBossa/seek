@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+  <!-- Titulo y Logo -->
+  <div class="seek-icon">
+    <a href="/home">
+      <h1>Seek</h1>
+    </a>
+    <i class='bx bx-circle-outer-dashed-circle' style='color:#ffffff'></i> 
+  </div>
+
+  <!-- Contenedor de Login -->
+  <div class="box-login">
+    <h2>Inicio Sesión</h2>
+    <form action="/login" method="POST">
+        <div class="input-container">
+          <input type="text" name="correo" id="correo" placeholder="" required>
+          <label for="correo">Correo</label>
+        </div>
+
+        <div class="input-container">
+          <input type="password" name="password" id="password" placeholder="••••••••" required>
+          <label for="password">Contraseña</label>
+        </div>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+  </div>
+ 
+ <!-- Boton Iniciar sesion -->
+  <div class="box-backregister">
+    <p>¿No tienes cuenta?</p>
+    <a href="/register">
+      <button>Regístrate</button>
+    </a>
+  </div>
+</body>
+</html>

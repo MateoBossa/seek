@@ -40,15 +40,12 @@
                 <% tarjetas.forEach(t => { %>
                 <div class="tarjeta" data-id="<%= t.id %>">
                     <h3><%= t.titulo %></h3>
-                    <p><%= t.descripcion %></p>
-                    <p><strong>Prioridad:</strong> <%= t.prioridad %></p>
-                    <p><strong>Categoría:</strong> <%= t.categoria || 'Sin categoría' %></p>
-                    <button class="editar">✏️ Editar</button>
-                    <button class="eliminar">🗑️ Eliminar</button>
+                    <span class="icon-ojo">🙈</span>
                 </div>
                 <% }) %>
             <% } %>
         </div>
+
     </div>
     <!-- 🔼 FIN del contenedor desenfocable -->
 

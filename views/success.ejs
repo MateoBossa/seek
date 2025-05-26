@@ -37,15 +37,16 @@
             <% if (tarjetas.length === 0) { %>
                 <p>No tienes tarjetas aún.</p>
             <% } else { %>
-                <% tarjetas.forEach(t => { %>
+                <% const colores = ['#2287e0', '#e06722', '#22e07d', '#e0229d', '#a622e0', '#e0c222']; %>
+                <% tarjetas.forEach((t, index) => { %>
                 <div class="tarjeta" data-id="<%= t.id %>">
-                    <h3><%= t.titulo %></h3>
+                    <h3 style="background-color: <%= colores[index % colores.length] %>;"><%= t.titulo %></h3>
                     <span class="icon-ojo"
-                            data-descripcion="<%= t.descripcion %>"
-                            data-prioridad="<%= t.prioridad %>"
-                            data-creado="<%= t.created_at %>"
-                            data-actualizado="<%= t.updated_at %>">
-                        <img src="/img/eye-slash.png" alt="">
+                        data-descripcion="<%= t.descripcion %>"
+                        data-prioridad="<%= t.prioridad %>"
+                        data-creado="<%= t.created_at %>"
+                        data-actualizado="<%= t.updated_at %>">
+                    <img src="/img/eye-slash.png" alt="ver">
                     </span>
                 </div>
                 <% }) %>

@@ -40,11 +40,30 @@
                 <% tarjetas.forEach(t => { %>
                 <div class="tarjeta" data-id="<%= t.id %>">
                     <h3><%= t.titulo %></h3>
-                    <span class="icon-ojo">🙈</span>
+                    <span class="icon-ojo"
+                            data-descripcion="<%= t.descripcion %>"
+                            data-prioridad="<%= t.prioridad %>"
+                            data-creado="<%= t.created_at %>"
+                            data-actualizado="<%= t.updated_at %>">
+                        <img src="/img/eye-slash.png" alt="">
+                    </span>
                 </div>
                 <% }) %>
             <% } %>
         </div>
+
+        <!-- Detalles de la tarjeta -->
+        <div id="modal-detalle" class="modal oculto">
+            <div class="modal-contenido">
+                <span class="cerrar-modal">&times;</span>
+                <h2 id="modal-titulo"></h2>
+                <p id="modal-descripcion"></p>
+                <p><strong>Prioridad:</strong> <span id="modal-prioridad"></span></p>
+                <p><strong>Creado:</strong> <span id="modal-creado"></span></p>
+                <p><strong>Última actualización:</strong> <span id="modal-actualizado"></span></p>
+            </div>
+        </div>
+
 
     </div>
     <!-- 🔼 FIN del contenedor desenfocable -->

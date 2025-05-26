@@ -119,6 +119,8 @@ nav .seek-icon i {
   justify-content: start;
   gap: 20px;
   overflow: hidden; /* para que la luz no se salga */
+
+  animation: fadeInUp 0.3s ease-in-out; /* Animación al abrir el modal */
 }
 .modal-content > * {
   position: relative;
@@ -225,6 +227,7 @@ nav .seek-icon i {
     cursor: pointer;
     user-select: none;
     transition: background-color 0.3s ease;
+    user-select: none;
 
     /* display: flex;
     justify-content: space-between; */
@@ -242,10 +245,10 @@ nav .seek-icon i {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 10px;
 }
-#tarjetas-container .tarjeta .icon-ojo {
-    font-size: 20px;
-    color: #666;
+#tarjetas-container .tarjeta img {
+  width: 35px;
 }
 #tarjetas-container .tarjeta h3 {
     background-color: rgb(34, 135, 224);
@@ -257,31 +260,89 @@ nav .seek-icon i {
     text-overflow: ellipsis;
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
+    font-family: var(--poppins);
 }
-.tarjeta-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+/* Estilo del contenedor de descripción + tres puntos */
+.tarjeta-resumen {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+/* Ocultar por defecto */
+.tarjeta-resumen.oculto {
+  display: none;
+}
+.ver-detalle {
+  margin-top: 8px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .icon-ojo {
-  font-size: 24px;
-  color: #666;
-  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
-.tarjeta-header h3 {
-  flex-grow: 1;
-  margin: 0;
-  font-weight: 600;
-  font-size: 18px;
-}
-.tarjeta-contenido.oculto {
-  display: none;
+.icon-ojo.expandido {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 /* Opcional: cambiar el fondo al pasar el mouse */
 .tarjeta:hover {
   background-color: #f5f5f5;
 }
 
+/* Texto descripcion tarjeta  */
+.txt-descripcion {
+  font-family: var(--inika);
+  color: #bdbdbd;
+  font-size: 13px;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+}
+.threedots {
+  text-align: center;
+  width: 30px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+/* Modal dettalle tarjeta */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal-contenido {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 80%;
+  position: relative;
+}
+.cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.oculto {
+  display: none;
+}
 
 /* ANIMACIONES */
 /* Abrir modal */

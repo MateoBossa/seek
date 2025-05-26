@@ -4,70 +4,71 @@ const btnAbrir = document.getElementById('btn-nueva');
 const btnCancelar = document.getElementById('cancelar-modal');
 const mainContent = document.getElementById('main-content');
 
+// Funcion abrir para crear una nueva tarjeta
 btnAbrir.addEventListener('click', () => {
   modal.classList.remove('hidden');
   mainContent.classList.add('blur');
 });
-
+// Cancelar crear una nueva tarjeta
 btnCancelar.addEventListener('click', () => {
   modal.classList.add('hidden');
   mainContent.classList.remove('blur');
 });
 
 
-// Mostrar/ocultar el contenido al hacer click en la tarjeta
-document.querySelectorAll('.tarjeta').forEach(tarjeta => {
-  tarjeta.addEventListener('click', () => {
-    const contenido = tarjeta.querySelector('.tarjeta-contenido');
-    const icono = tarjeta.querySelector('.icon-ojo');
+// Mostrar primeramente (descripcion y 3 puntos)
+document.querySelectorAll('.icon-ojo').forEach(span => {
+  const originalContent = span.innerHTML;
 
-    if (contenido.classList.contains('oculto')) {
-      contenido.classList.remove('oculto');
-      icono.textContent = '👁️'; // cambia a ojo abierto
+  span.addEventListener('click', e => {
+    e.stopPropagation();
+
+    const descripcion = span.dataset.descripcion;
+    const prioridad = span.dataset.prioridad;
+    const creado = span.dataset.creado;
+    const actualizado = span.dataset.actualizado;
+    const titulo = span.closest('.tarjeta').querySelector('h3').innerText;
+
+    if (span.classList.contains('expandido')) {
+      // Colapsar
+      span.innerHTML = originalContent;
+      span.classList.remove('expandido');
+      span.style.flexDirection = '';
+      span.style.justifyContent = '';
+      span.style.alignItems = '';
+      span.style.gap = '';
     } else {
-      contenido.classList.add('oculto');
-      icono.textContent = '🙈'; // ojo tapado
+      // Expandir
+      span.innerHTML = `
+        <p class="txt-descripcion"><strong>Descripción:</strong> ${descripcion}</p>
+        <i class='bx bx-dots-horizontal-rounded threedots' style='color:#333; cursor: pointer;'></i>
+      `;
+
+      span.classList.add('expandido');
+      span.style.flexDirection = 'column';
+      span.style.justifyContent = 'center';
+      span.style.alignItems = 'center';
+      span.style.gap = '5px';
+
+      // Esperar que se renderice el ícono para poder agregar el evento
+      setTimeout(() => {
+        span.querySelector('.threedots').addEventListener('click', e => {
+          e.stopPropagation();
+          document.getElementById('modal-titulo').innerText = titulo;
+          document.getElementById('modal-descripcion').innerText = descripcion;
+          document.getElementById('modal-prioridad').innerText = prioridad;
+          document.getElementById('modal-creado').innerText = creado;
+          document.getElementById('modal-actualizado').innerText = actualizado;
+          document.getElementById('modal-detalle').classList.remove('oculto');
+        });
+      }, 0);
     }
   });
 });
 
-// Detalle de la tarjeta
-document.querySelectorAll('.tarjeta').forEach(tarjeta => {
-  tarjeta.addEventListener('click', () => {
-    const id = tarjeta.dataset.id;
-    // Aquí abres un modal con la info completa (puedes hacer fetch o usar info almacenada)
-    abrirModalConDetalle(id);
-  });
+// Cerrar el modal
+document.querySelector('.cerrar-modal').addEventListener('click', () => {
+  document.getElementById('modal-detalle').classList.add('oculto');
 });
 
-
-function getColorAleatorio() {
-  const letras = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letras[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-function crearTarjeta(tarjeta) {
-  const div = document.createElement('div');
-  div.classList.add('tarjeta');
-  div.dataset.id = tarjeta.id;
-
-  const icono = document.createElement('span');
-  icono.className = 'icon-ojo';
-  icono.textContent = '🙈';
-
-  const titulo = document.createElement('h3');
-  titulo.textContent = tarjeta.titulo;
-
-  // Color aleatorio
-  titulo.style.color = getColorAleatorio();
-
-  div.appendChild(icono);
-  div.appendChild(titulo);
-
-  document.getElementById('tarjetas-container').appendChild(div);
-}
 

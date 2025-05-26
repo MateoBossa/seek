@@ -36,7 +36,9 @@ router.get('/register', (req, res) => {
 
 // Vista Login
 router.get('/login', (req, res) => {
-  res.render('login');
+  const errorType = req.session.error;
+  req.session.error = null; // limpiar después de usar
+  res.render('login', { errorType }); // pasar el tipo de error a la vista
 });
 
 // Peticion Registro
@@ -63,14 +65,16 @@ router.post('/login', async (req, res) => {
     const [results] = await db.execute(sql, [correo]);
 
     if (results.length === 0) {
-      return res.send('Correo no registrado. <a href="/login">Volver</a>');
+      req.session.error = 'correo'; // Marcar que el error es el correo
+      return res.redirect('/login');
     }
 
     const user = results[0];
     const validPassword = await bcrypt.compare(password, user.contrasena);
 
     if (!validPassword) {
-      return res.send('Contraseña incorrecta. <a href="/login">Volver</a>');
+      req.session.error = 'contrasena'; // Marcar que el error es la contraseña
+      return res.redirect('/login');
     }
 
     req.session.userId = user.id;

@@ -34,12 +34,26 @@
     </form>
   </div>
  
- <!-- Boton Iniciar sesion -->
+  <!-- Boton Iniciar sesion -->
   <div class="box-backregister">
     <p>¿No tienes cuenta?</p>
     <a href="/register">
       <button>Regístrate</button>
     </a>
   </div>
+
+  <!-- Modal contraseña incorrecta -->
+ <% if (errorType === 'contrasena') { %>
+    <div id="modal-error" class="modal-error">
+      <p>Contraseña incorrecta</p>
+    </div>
+  <% } else if (errorType === 'correo') { %>
+    <div id="modal-error" class="modal-error">
+      <p>Correo no registrado</p>
+    </div>
+  <% } %>
+
+
+  <script src="/js/login.js"></script>
 </body>
 </html>

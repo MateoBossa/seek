@@ -139,3 +139,28 @@ a {
 .box-backregister form button:active {
     transform: scale(.98);
 }
+
+/* Modal Contraseña Incorrecta */
+#modal-error {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d24e45;
+  color: white;
+  padding: 15px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  opacity: 0;
+  z-index: 1000;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+#modal-error p {
+  font-family: var(--inika);
+  font-size: 13px;
+}
+#modal-error.show {
+  top: 30px;
+  opacity: 1;
+}

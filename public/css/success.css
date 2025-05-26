@@ -260,8 +260,11 @@ nav .seek-icon i {
     text-overflow: ellipsis;
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
-    font-family: var(--poppins);
+    font-family: var(--aladin);
     box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 /* Estilo del contenedor de descripción + tres puntos */
@@ -300,7 +303,7 @@ nav .seek-icon i {
 
 /* Texto descripcion tarjeta  */
 .txt-descripcion {
-  font-family: var(--inika);
+  font-family: var(--amarante);
   color: #bdbdbd;
   font-size: 13px;
   line-height: 1.5;
@@ -320,14 +323,14 @@ nav .seek-icon i {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 .modal-contenido {
-  background: white;
+  background: #2b2929;
   padding: 20px 30px;
   border-radius: 10px;
   max-width: 400px;
@@ -343,6 +346,29 @@ nav .seek-icon i {
 }
 .oculto {
   display: none;
+}
+
+.info-tarjeta {
+  color: #fff;
+} 
+#modal-prioridad {
+  text-transform: capitalize
+}
+#modal-titulo {
+    font-family: var(--inika);
+    margin-bottom: 20px;
+}
+#modal-descripcion {
+    font-family: var(--inika);
+    margin-bottom: 15px;
+}
+#modal-prioridad,
+#modal-creado,
+#modal-descripcion,
+#modal-actualizado {
+  color: #c2c2c2;
+  font-family: var(--inika);
+  margin-bottom: 15px;
 }
 
 /* ANIMACIONES */
